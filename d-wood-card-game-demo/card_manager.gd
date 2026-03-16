@@ -60,10 +60,19 @@ func raycast_check_for_card():
 	parameters.collide_with_areas = true
 	parameters.collision_mask = COLLISION_MASK_CARD
 	var result = space_state.intersect_point(parameters)
-	#if result.size() > 0:
-		#return get_card_with_highest_z_index(result)
+	if result.size() > 0:
+		return get_card_with_highest_z_index(result)
 	return null
 	
-	#func get_card_with_highest_z_index(cards):
-		#var highest_z_card = cards[0].collider.get_parent()
-		#var highest_z_index = highest_z_card.z_index
+func get_card_with_highest_z_index(cards):
+	#assume first card passed in has highest Z index
+	var highest_z_card = cards[0].collider.get_parent()
+	var highest_z_index = highest_z_card.z_index
+	
+#loop through rest of cards looking for higher Z values
+	for i in range(1, cards.size()):
+		var current_card = cards[i].collider.get_parent()
+		if current_card.z_index > highest_z_index:
+			highest_z_card = current_card
+			highest_z_index = current_card.z_index
+	return highest_z_card 
