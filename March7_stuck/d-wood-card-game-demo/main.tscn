@@ -7,12 +7,10 @@
 [node name="Main" type="Node2D" unique_id=1749530487]
 
 [node name="CardManager" type="Node2D" parent="." unique_id=1405862325]
-position = Vector2(-2, -1)
 script = ExtResource("2_h2yge")
 
 [node name="CardSlot" parent="." unique_id=728588248 instance=ExtResource("3_h2yge")]
 position = Vector2(120, 282)
 
 [node name="PlayerHand" type="Node2D" parent="." unique_id=1410455314]
-position = Vector2(-1, -7)
 script = ExtResource("3_1bvp3")
