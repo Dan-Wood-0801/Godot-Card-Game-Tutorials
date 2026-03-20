@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://dy5bxudxtt3hn" path="res://card_manager.gd" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://bxve7dys1525i" path="res://player_hand.gd" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c1tb6dgl1bdxl" path="res://Scenes/card_slot.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://bi82oxpddekuc" path="res://deck.gd" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://c4fe1k2s4t4t7" path="res://Deck.png" id="5_272bh"]
+[ext_resource type="Script" uid="uid://bwg6uvj5quxm2" path="res://input_manager.gd" id="6_5vw27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(172, 259)
 
 [node name="Main" type="Node2D" unique_id=1749530487]
 
@@ -11,8 +17,24 @@ position = Vector2(-2, -1)
 script = ExtResource("2_h2yge")
 
 [node name="CardSlot" parent="." unique_id=728588248 instance=ExtResource("3_h2yge")]
-position = Vector2(120, 282)
+position = Vector2(180, 390)
 
 [node name="PlayerHand" type="Node2D" parent="." unique_id=1410455314]
-position = Vector2(-1, -7)
+position = Vector2(1000, 890)
 script = ExtResource("3_1bvp3")
+
+[node name="Deck" type="Node2D" parent="." unique_id=594303106]
+position = Vector2(150, 890)
+script = ExtResource("4_7mycd")
+
+[node name="Area2D" type="Area2D" parent="Deck" unique_id=16427990]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D" unique_id=1192419853]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck" unique_id=1759452408]
+texture = ExtResource("5_272bh")
+
+[node name="InputManager" type="Node2D" parent="." unique_id=1255474167]
+script = ExtResource("6_5vw27")
